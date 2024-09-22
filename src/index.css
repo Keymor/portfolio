@@ -1,0 +1,181 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f8ff;
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+.topControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.inputMain {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #ff6b6b;
+  border-radius: 25px;
+  outline: none;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.inputMain:focus {
+  border-color: #4ecdc4;
+  box-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+}
+
+.searchButton, .randomButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 5px;
+}
+
+.searchButton {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.randomButton {
+  background-color: #4ecdc4;
+  color: white;
+}
+
+.searchButton:hover, .randomButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.imageHolder, .imageHolderOpen {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+  overflow: hidden;
+}
+
+.imageHolderOpen {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.imageHolder:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mealText {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.meal, .singleImg {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.randomText, .reciptText {
+  margin-top: 15px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.randomeClose, .newClose {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.randomeClose:hover, .newClose:hover {
+  background-color: #ff4757;
+}
+
+.singleMealBox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 50%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.singleMealBox h1 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.singleMealBox .singleImg {
+  max-width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+@media (max-width: 768px) {
+  .topControls {
+      flex-direction: column;
+  }
+
+  .inputMain, .searchButton, .randomButton {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+
+  .imageHolderOpen {
+      grid-column: span 1;
+  }
+
+  .singleMealBox {
+      width: 80%;
+  }
+}
