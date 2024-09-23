@@ -14,7 +14,7 @@ function App() {
       let newMeal = {
                      nameOfMeal: result.meals[0].strMeal,
                      img: result.meals[0].strMealThumb,
-                     instruction: result.meals[0].strInstructions.substring(0,300)
+                     instruction: result.meals[0].strInstructions
        }
       setrandomMeal((r) => [...r, newMeal])
     }
@@ -29,7 +29,7 @@ function App() {
 
   async function sixPlaces() {
     let listOfMeal = []
-    for(let i = 0; i <= 5; i++){
+    for(let i = 0; i <= 7; i++){
       let mealList = await info()
       if(mealList) mealList.push(listOfMeal)
     }
@@ -84,7 +84,7 @@ function App() {
         </button>
         <button 
           className='randomButton' 
-          onClick={() => (randomMeal.length < 6 ? sixPlaces() : (setrandomMeal([]), sixPlaces()))}
+          onClick={() => (randomMeal.length < 8 ? sixPlaces() : (setrandomMeal([]), sixPlaces()))}
         >
           Random Meal
         </button>
