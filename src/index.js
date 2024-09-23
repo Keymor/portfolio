@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './Tasks/style.css'
+import './Accordian/stylesAcc.css'
 import App from './App';
+import TaskApp from './Tasks/App';
+import Accordian from './Accordian';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <TaskApp /> <Accordian />
     <App />
   </React.StrictMode>
 );

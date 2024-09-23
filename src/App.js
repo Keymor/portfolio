@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
   const [randomMeal, setrandomMeal] = useState([])
@@ -29,7 +29,7 @@ function App() {
 
   async function sixPlaces() {
     let listOfMeal = []
-    for(let i = 0; i <= 7; i++){
+    for(let i = 0; i <= 5; i++){
       let mealList = await info()
       if(mealList) mealList.push(listOfMeal)
     }
@@ -84,7 +84,7 @@ function App() {
         </button>
         <button 
           className='randomButton' 
-          onClick={() => (randomMeal.length < 8 ? sixPlaces() : (setrandomMeal([]), sixPlaces()))}
+          onClick={() => (randomMeal.length < 6 ? sixPlaces() : (setrandomMeal([]), sixPlaces()))}
         >
           Random Meal
         </button>
