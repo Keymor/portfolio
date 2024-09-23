@@ -11,8 +11,12 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TaskApp /> <Accordian />
+    <h1 className='h1ForFin'>Recipes app</h1>
     <App />
+    <h1 className='h1ForFin'>Task Manager</h1>
+    <TaskApp /> 
+    <h1 className='h1ForFin'>Accordion</h1>
+    <Accordian />
   </React.StrictMode>
 );
 
