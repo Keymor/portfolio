@@ -26,7 +26,7 @@ function Accordian() {
   }
   
   return ( 
-    <div className='container1'>
+    <div className='container2'>
       <button className='button1' onClick={() => setMultySelect(!multySelect)}>Multyselect</button>
       {data.map((dataItem) => (
         <div className='text-block' onClick={multySelect === true ?

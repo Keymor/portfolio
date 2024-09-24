@@ -43,7 +43,7 @@ function TaskApp() {
 
     return (
         
-            <div className="conteiner">
+            <div className="conteiner1">
                 <h1 className="title">Note</h1>
                 <input className="mainInput" id="inputText" type="text" placeholder="Task" onChange={updateTask} /><br/>
                 <button className="addButton" onClick={addTask}>ADD</button>
