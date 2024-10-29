@@ -6,16 +6,20 @@ function App() {
   const [searchMeal, setSearchMeal] = useState([])
   const [visible, setVisible] = useState(null)
 
+  useEffect(() => {
+    sixPlaces()
+  }, [])
+
   async function info() {
 
     try {
       const responds = await fetch("https://www.themealdb.com/api/json/v1/1/random.php")
       const result = await responds.json();
       let newMeal = {
-                     nameOfMeal: result.meals[0].strMeal,
-                     img: result.meals[0].strMealThumb,
-                     instruction: result.meals[0].strInstructions
-       }
+        nameOfMeal: result.meals[0].strMeal,
+        img: result.meals[0].strMealThumb,
+        instruction: result.meals[0].strInstructions
+      }
       setrandomMeal((r) => [...r, newMeal])
     }
     catch (error) {
@@ -23,32 +27,33 @@ function App() {
     }
   }
 
-  function inputValue(e){
+  function inputValue(e) {
     setInput(e.target.value)
   }
 
   async function sixPlaces() {
     let listOfMeal = []
-    for(let i = 0; i <= 5; i++){
+    for (let i = 0; i <= 5; i++) {
       let mealList = await info()
-      if(mealList) mealList.push(listOfMeal)
+      if (mealList) mealList.push(listOfMeal)
     }
     setrandomMeal((r) => [...r, ...listOfMeal])
   }
 
-  function openRandomMeal(index){
+  function openRandomMeal(index) {
     setVisible(index)
   }
 
-  async function openSearchedMeal(){
-    if(input){
-      try{
+  async function openSearchedMeal() {
+    if (input) {
+      try {
         const finding = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`)
         const found = await finding.json();
-        if(found.meals){
-          let serchedMeal = {nameOfMeal: found.meals[0].strMeal,
-                            img: found.meals[0].strMealThumb,
-                            instruction: found.meals[0].strInstructions.substring(0,300)
+        if (found.meals) {
+          let serchedMeal = {
+            nameOfMeal: found.meals[0].strMeal,
+            img: found.meals[0].strMealThumb,
+            instruction: found.meals[0].strInstructions.substring(0, 300)
           }
           console.log(serchedMeal.nameOfMeal)
           setSearchMeal((s) => [...s, serchedMeal])
@@ -58,7 +63,7 @@ function App() {
           document.getElementsByClassName('inputMain')[0].placeholder = 'No meals'
         }
       }
-      catch (error){
+      catch (error) {
         console.error(error)
       }
     } else {
@@ -69,21 +74,21 @@ function App() {
   return (
     <div className='body'>
       <div className='topControls'>
-        <input 
-          className='inputMain' 
-          type='text' 
-          placeholder='Your Meal' 
+        <input
+          className='inputMain'
+          type='text'
+          placeholder='Your Meal'
           onChange={inputValue}
           value={input}
         />
-        <button 
-          className='searchButton' 
+        <button
+          className='searchButton'
           onClick={() => (searchMeal.length > 0 ? (setSearchMeal([]), openSearchedMeal()) : openSearchedMeal())}
         >
           Search
         </button>
-        <button 
-          className='randomButton' 
+        <button
+          className='randomButton'
           onClick={() => (randomMeal.length < 6 ? sixPlaces() : (setrandomMeal([]), sixPlaces()))}
         >
           Random Meal
@@ -99,27 +104,27 @@ function App() {
           </div>
         ))}
         {randomMeal.map((mealItem, index) => (
-          <div 
-            className={visible === index ? 'imageHolderOpen' : 'imageHolder'} 
+          <div
+            className={visible === index ? 'imageHolderOpen' : 'imageHolder'}
             key={index}
           >
-            <button 
-              className='randomeClose' 
-              style={{visibility: visible === index ? 'visible' : 'hidden'}} 
+            <button
+              className='randomeClose'
+              style={{ visibility: visible === index ? 'visible' : 'hidden' }}
               onClick={() => setVisible(null)}
             >
               Close (X)
             </button>
             <p className='mealText'>{mealItem.nameOfMeal}</p>
-            <img 
-              className='meal' 
-              src={mealItem.img} 
-              alt={mealItem.nameOfMeal} 
+            <img
+              className='meal'
+              src={mealItem.img}
+              alt={mealItem.nameOfMeal}
               onClick={() => openRandomMeal(index)}
             />
-            <p 
-              className='randomText' 
-              style={{display: visible === index ? 'block' : 'none'}}
+            <p
+              className='randomText'
+              style={{ display: visible === index ? 'block' : 'none' }}
             >
               {mealItem.instruction}
             </p>
