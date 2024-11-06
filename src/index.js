@@ -7,6 +7,7 @@ import App from './App';
 import TaskApp from './Tasks/App';
 import Accordian from './Accordian';
 import reportWebVitals from './reportWebVitals';
+import Animation from './Animation/animation'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,6 +18,8 @@ root.render(
     <TaskApp /> 
     <h1 className='h1ForFin'>Accordion</h1>
     <Accordian />
+    <h1 className='h1ForFin'>Animation</h1>
+    <Animation />
   </React.StrictMode>
 );
 

@@ -1,0 +1,18 @@
+.bollContainer{
+    display: flex;
+    width: 1vw;
+    position: relative;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+}
+
+.boll{
+    margin: auto;
+    text-align: center;
+    background-color: black;
+    border-radius: 25px;
+    width: 100px;
+}
